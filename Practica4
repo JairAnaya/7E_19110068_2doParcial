@@ -24,7 +24,12 @@ cv2.destroyAllWindows()
 pts = np.array ([[100, 50], [255, 100], [150, 200], [90, 300]], np.int32) # conjunto de vértices
 pts = pts.reshape((-1, 2, 1))
 cv2.polylines(imagen, [pts], True, (255, 255, 255),2)
- 
+
+roi = cv2.selectROI('roi',imagen)
+recRoi = imagen[int(roi[1]):int(roi[1]+roi[3]), int(roi[0]):int(roi[0]+roi[2])]
+
 cv2.imshow('imagen', imagen)
+cv2.imshow('roi',recRoi)
+ 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
